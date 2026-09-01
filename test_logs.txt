@@ -1,0 +1,5 @@
+2026-08-22 18:00:01|192.168.1.10|192.168.1.1|admin|Login|Successful login
+2026-08-22 18:01:15|185.220.101.5|192.168.1.10|admin|Failed Login|Failed login from suspicious IP
+2026-08-22 18:02:30|10.0.0.25|192.168.1.10|root|Malware Detection|Malware detected on endpoint
+2026-08-22 18:03:45|10.0.0.50|192.168.1.10|admin|Security Event|SQL injection detected
+2026-08-22 18:04:20|10.0.0.60|192.168.1.10|admin|Security Event|Ransomware detected
