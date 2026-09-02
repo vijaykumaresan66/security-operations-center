@@ -1,0 +1,732 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1120;
+    color: #e5e7eb;
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #111827;
+
+    border-right: 1px solid #1f2937;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 1000;
+}
+
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 25px 20px;
+
+    border-bottom: 1px solid #1f2937;
+}
+
+
+.logo-icon {
+    font-size: 30px;
+}
+
+
+.logo h2 {
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+    color: #ffffff;
+}
+
+
+.logo span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: #64748b;
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.navigation {
+    padding: 20px 12px;
+}
+
+
+.nav-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 15px;
+
+    margin-bottom: 6px;
+
+    border-radius: 8px;
+
+    color: #94a3b8;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+
+.nav-item:hover {
+    background: #1e293b;
+
+    color: #ffffff;
+}
+
+
+.nav-item.active {
+    background: #1d4ed8;
+
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   SIDEBAR BOTTOM
+========================================== */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding: 15px;
+
+    border-top: 1px solid #1f2937;
+}
+
+
+.user-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+}
+
+
+.user-avatar {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #2563eb;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+.user-info strong {
+    display: block;
+
+    font-size: 13px;
+
+    color: #ffffff;
+}
+
+
+.user-info small {
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+
+.logout-button {
+    display: block;
+
+    padding: 10px;
+
+    text-align: center;
+
+    background: #1f2937;
+
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+}
+
+
+.logout-button:hover {
+    background: #374151;
+
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   MAIN CONTENT
+========================================== */
+
+.main-content {
+    margin-left: 250px;
+
+    padding: 30px;
+
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   TOP BAR
+========================================== */
+
+.topbar {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+
+.topbar h1 {
+    font-size: 28px;
+
+    color: #ffffff;
+}
+
+
+.topbar p {
+    margin-top: 7px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+
+.topbar-right {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.status-indicator {
+    font-size: 12px;
+
+    color: #94a3b8;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+}
+
+
+.current-user {
+    padding: 9px 15px;
+
+    background: #111827;
+
+    border: 1px solid #1f2937;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   STATISTICS
+========================================== */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+.stat-card {
+    background: #111827;
+
+    border: 1px solid #1f2937;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    transition: 0.2s;
+}
+
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #334155;
+}
+
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+
+.blue {
+    background: #172554;
+}
+
+
+.red {
+    background: #450a0a;
+}
+
+
+.orange {
+    background: #431407;
+}
+
+
+.yellow {
+    background: #422006;
+}
+
+
+.purple {
+    background: #2e1065;
+}
+
+
+.green {
+    background: #052e16;
+}
+
+
+.stat-title {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.stat-card h2 {
+    margin-top: 5px;
+
+    font-size: 25px;
+
+    color: #ffffff;
+}
+
+
+.stat-card small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   PANELS
+========================================== */
+
+.panel {
+    background: #111827;
+
+    border: 1px solid #1f2937;
+
+    border-radius: 10px;
+
+    margin-bottom: 25px;
+
+    overflow: hidden;
+}
+
+
+.panel-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px;
+
+    border-bottom: 1px solid #1f2937;
+}
+
+
+.panel-header h2 {
+    font-size: 17px;
+
+    color: #ffffff;
+}
+
+
+.panel-header p {
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #64748b;
+}
+
+
+.record-count {
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.table-container {
+    overflow-x: auto;
+}
+
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 12px;
+}
+
+
+thead {
+    background: #0f172a;
+}
+
+
+th {
+    padding: 13px 15px;
+
+    text-align: left;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+td {
+    padding: 14px 15px;
+
+    border-top: 1px solid #1f2937;
+
+    color: #cbd5e1;
+
+    white-space: nowrap;
+}
+
+
+tbody tr:hover {
+    background: #172033;
+}
+
+
+.ip {
+    font-family: Consolas, monospace;
+
+    color: #60a5fa;
+}
+
+
+/* ==========================================
+   SEVERITY
+========================================== */
+
+.severity {
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+.severity-critical {
+    background: #450a0a;
+
+    color: #fca5a5;
+}
+
+
+.severity-high {
+    background: #431407;
+
+    color: #fdba74;
+}
+
+
+.severity-medium {
+    background: #422006;
+
+    color: #fcd34d;
+}
+
+
+.severity-low {
+    background: #052e16;
+
+    color: #86efac;
+}
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.status-badge {
+    padding: 4px 8px;
+
+    background: #172554;
+
+    color: #93c5fd;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   EMPTY STATE
+========================================== */
+
+.empty-state {
+    text-align: center;
+
+    padding: 55px 20px;
+
+    color: #64748b;
+}
+
+
+.empty-state div {
+    font-size: 35px;
+
+    margin-bottom: 10px;
+}
+
+
+.empty-state h3 {
+    color: #cbd5e1;
+
+    margin-bottom: 6px;
+}
+
+
+.empty-state p {
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   SYSTEM
+========================================== */
+
+.system-panel {
+    background: #111827;
+
+    border: 1px solid #1f2937;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.system-panel h2 {
+    font-size: 16px;
+
+    color: #ffffff;
+}
+
+
+.system-panel p {
+    margin-top: 6px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.system-status {
+    display: flex;
+
+    gap: 20px;
+}
+
+
+.system-status div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 1100px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+
+    .logo div:not(.logo-icon),
+    .nav-item span:last-child,
+    .user-info div:not(.user-avatar),
+    .logout-button {
+        display: none;
+    }
+
+
+    .main-content {
+        margin-left: 70px;
+
+        padding: 20px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .topbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    .system-panel {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+}

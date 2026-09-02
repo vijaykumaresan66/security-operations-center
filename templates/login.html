@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SOC Analyst | Login</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           BODY
+        ====================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(0, 119, 255, 0.16),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 80% 80%,
+                    rgba(0, 255, 170, 0.10),
+                    transparent 30%
+                ),
+
+                #050a0f;
+
+            color: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            position: relative;
+
+        }
+
+
+        /* =====================================================
+           BACKGROUND GRID
+        ====================================================== */
+
+        body::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+
+            pointer-events: none;
+
+        }
+
+
+        /* =====================================================
+           GLOW EFFECTS
+        ====================================================== */
+
+        .glow {
+
+            position: absolute;
+
+            width: 350px;
+
+            height: 350px;
+
+            border-radius: 50%;
+
+            filter: blur(90px);
+
+            opacity: 0.18;
+
+            pointer-events: none;
+
+        }
+
+
+        .glow-one {
+
+            background: #0077ff;
+
+            top: -150px;
+
+            left: -100px;
+
+        }
+
+
+        .glow-two {
+
+            background: #00ffaa;
+
+            bottom: -170px;
+
+            right: -100px;
+
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ====================================================== */
+
+        .login-container {
+
+            width: 920px;
+
+            max-width: 94%;
+
+            min-height: 570px;
+
+            display: grid;
+
+            grid-template-columns: 1.05fr 0.95fr;
+
+            position: relative;
+
+            z-index: 2;
+
+            background: rgba(10, 18, 27, 0.88);
+
+            border: 1px solid rgba(120, 160, 190, 0.18);
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.55),
+
+                0 0 80px rgba(0, 119, 255, 0.08);
+
+            backdrop-filter: blur(18px);
+
+        }
+
+
+        /* =====================================================
+           LEFT SIDE
+        ====================================================== */
+
+        .login-info {
+
+            padding: 55px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 119, 255, 0.13),
+                    rgba(0, 255, 170, 0.03)
+                );
+
+            border-right: 1px solid
+                rgba(120, 160, 190, 0.13);
+
+        }
+
+
+        /* =====================================================
+           LOGO
+        ====================================================== */
+
+        .logo-box {
+
+            width: 70px;
+
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #00b7ff
+                );
+
+            box-shadow:
+                0 12px 35px
+                rgba(0, 124, 255, 0.35);
+
+            font-size: 34px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* =====================================================
+           BRAND
+        ====================================================== */
+
+        .brand {
+
+            color: #5eb4ff;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .login-info h1 {
+
+            font-size: 42px;
+
+            line-height: 1.1;
+
+            margin-bottom: 16px;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .login-info h1 span {
+
+            color: #3da9ff;
+
+        }
+
+
+        .description {
+
+            color: #8e9ba8;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            max-width: 430px;
+
+        }
+
+
+        /* =====================================================
+           SECURITY FEATURES
+        ====================================================== */
+
+        .security-features {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 32px;
+
+        }
+
+
+        .security-feature {
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,0.025);
+
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            color: #b9c4ce;
+
+            font-size: 13px;
+
+        }
+
+
+        .security-feature strong {
+
+            display: block;
+
+            color: #ffffff;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        /* =====================================================
+           RIGHT SIDE
+        ====================================================== */
+
+        .login-panel {
+
+            padding: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .login-box {
+
+            width: 100%;
+
+            max-width: 340px;
+
+        }
+
+
+        .login-box h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .login-subtitle {
+
+            color: #7f8c98;
+
+            font-size: 14px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        /* =====================================================
+           FLASH MESSAGE
+        ====================================================== */
+
+        .flash-message {
+
+            padding: 12px 14px;
+
+            border-radius: 8px;
+
+            margin-bottom: 18px;
+
+            font-size: 13px;
+
+            background: rgba(255, 70, 70, 0.10);
+
+            border: 1px solid
+                rgba(255, 70, 70, 0.25);
+
+            color: #ff8d8d;
+
+        }
+
+
+        /* =====================================================
+           FORM
+        ====================================================== */
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #b7c1cb;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .input-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            left: 15px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 16px;
+
+            opacity: 0.65;
+
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding:
+                0 15px 0 45px;
+
+            background: #080f16;
+
+            border: 1px solid #263442;
+
+            border-radius: 9px;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            outline: none;
+
+            transition: all 0.2s ease;
+
+        }
+
+
+        .form-group input::placeholder {
+
+            color: #52606d;
+
+        }
+
+
+        .form-group input:focus {
+
+            border-color: #2188ff;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(33, 136, 255, 0.10);
+
+            background: #0a121b;
+
+        }
+
+
+        /* =====================================================
+           LOGIN BUTTON
+        ====================================================== */
+
+        .login-button {
+
+            width: 100%;
+
+            height: 49px;
+
+            margin-top: 8px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087cff,
+                    #0066d6
+                );
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 111, 255, 0.22);
+
+            transition: all 0.2s ease;
+
+        }
+
+
+        .login-button:hover {
+
+            transform: translateY(-2px);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1988ff,
+                    #0074ee
+                );
+
+            box-shadow:
+                0 14px 30px
+                rgba(0, 111, 255, 0.32);
+
+        }
+
+
+        .login-button:active {
+
+            transform: translateY(0);
+
+        }
+
+
+        /* =====================================================
+           STATUS
+        ====================================================== */
+
+        .system-status {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 25px;
+
+            color: #74818d;
+
+            font-size: 12px;
+
+        }
+
+
+        .status-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #20d98a;
+
+            box-shadow:
+                0 0 10px #20d98a;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        .login-footer {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+            color: #56636f;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 760px) {
+
+            body {
+
+                overflow: auto;
+
+                padding: 20px;
+
+            }
+
+
+            .login-container {
+
+                grid-template-columns: 1fr;
+
+                min-height: auto;
+
+            }
+
+
+            .login-info {
+
+                padding: 35px;
+
+                border-right: none;
+
+                border-bottom: 1px solid
+                    rgba(120, 160, 190, 0.13);
+
+            }
+
+
+            .login-info h1 {
+
+                font-size: 32px;
+
+            }
+
+
+            .login-panel {
+
+                padding: 35px;
+
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .login-info {
+
+                padding: 28px;
+
+            }
+
+
+            .login-panel {
+
+                padding: 28px;
+
+            }
+
+
+            .security-features {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Background effects -->
+
+    <div class="glow glow-one"></div>
+
+    <div class="glow glow-two"></div>
+
+
+
+    <!-- =====================================================
+         LOGIN CONTAINER
+    ====================================================== -->
+
+    <div class="login-container">
+
+
+        <!-- =================================================
+             LEFT INFORMATION
+        ================================================== -->
+
+        <div class="login-info">
+
+
+            <div class="logo-box">
+                🛡️
+            </div>
+
+
+            <div class="brand">
+                SECURITY OPERATIONS CENTER
+            </div>
+
+
+            <h1>
+                SOC <span>Analyst</span>
+            </h1>
+
+
+            <p class="description">
+
+                A centralized security monitoring platform
+                for analyzing security logs, detecting
+                suspicious activity, generating alerts,
+                and supporting SOC investigation workflows.
+
+            </p>
+
+
+
+            <div class="security-features">
+
+
+                <div class="security-feature">
+
+                    <strong>
+                        🔍 Log Analysis
+                    </strong>
+
+                    Security event monitoring
+
+                </div>
+
+
+                <div class="security-feature">
+
+                    <strong>
+                        🚨 Threat Detection
+                    </strong>
+
+                    Suspicious activity detection
+
+                </div>
+
+
+                <div class="security-feature">
+
+                    <strong>
+                        📊 Risk Analysis
+                    </strong>
+
+                    Security risk scoring
+
+                </div>
+
+
+                <div class="security-feature">
+
+                    <strong>
+                        🛡️ SOC Monitoring
+                    </strong>
+
+                    Centralized security dashboard
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             LOGIN PANEL
+        ================================================== -->
+
+        <div class="login-panel">
+
+
+            <div class="login-box">
+
+
+                <h2>
+                    Welcome Back
+                </h2>
+
+
+                <p class="login-subtitle">
+
+                    Sign in to access the SOC dashboard
+
+                </p>
+
+
+
+                <!-- Flash Messages -->
+
+                {% with messages =
+                    get_flashed_messages(
+                        with_categories=true
+                    )
+                %}
+
+                    {% if messages %}
+
+                        {% for category, message in messages %}
+
+                            <div class="flash-message">
+
+                                {{ message }}
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% endwith %}
+
+
+
+                <!-- Login Form -->
+
+                <form
+                    method="POST"
+                    action="{{ url_for('login') }}"
+                >
+
+
+                    <!-- Username -->
+
+                    <div class="form-group">
+
+
+                        <label for="username">
+                            Username
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Enter your username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+
+                        <label for="password">
+                            Password
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔐
+                            </span>
+
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- Login -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+
+                        Sign In to SOC
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- System Status -->
+
+                <div class="system-status">
+
+                    <span class="status-dot"></span>
+
+                    SOC System Ready
+
+                </div>
+
+
+
+                <!-- Footer -->
+
+                <div class="login-footer">
+
+                    AI SOC Analyst Dashboard
+
+                    <br>
+
+                    Developed by Vijay
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>

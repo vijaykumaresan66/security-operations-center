@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SOC Analyst - Upload Logs</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/dashboard.css') }}"
+    >
+
+    <style>
+
+        /* ==========================================
+           UPLOAD PAGE
+        ========================================== */
+
+        .upload-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .upload-box {
+            border: 2px dashed #294863;
+            background: #091827;
+            border-radius: 12px;
+            padding: 55px 30px;
+            text-align: center;
+            transition: 0.2s ease;
+        }
+
+        .upload-box:hover {
+            border-color: #38bdf8;
+            background: #0b1d30;
+        }
+
+        .upload-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #102d45;
+            border: 1px solid #28506c;
+            border-radius: 50%;
+
+            font-size: 32px;
+        }
+
+        .upload-box h2 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .upload-box p {
+            color: #71869c;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .file-input-wrapper {
+            margin-bottom: 22px;
+        }
+
+        .file-input {
+            width: 100%;
+            max-width: 500px;
+
+            padding: 12px;
+
+            background: #101f31;
+            color: #a9bacb;
+
+            border: 1px solid #29425c;
+            border-radius: 7px;
+
+            cursor: pointer;
+        }
+
+        .file-input:hover {
+            border-color: #38bdf8;
+        }
+
+        .upload-button {
+            border: none;
+            padding: 12px 24px;
+
+            background: #12628a;
+            color: #ffffff;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .upload-button:hover {
+            background: #1682b5;
+            transform: translateY(-1px);
+        }
+
+        .upload-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .upload-info {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+        .info-card {
+            background: #0c1929;
+            border: 1px solid #1d3047;
+            border-radius: 8px;
+
+            padding: 18px;
+            text-align: center;
+        }
+
+        .info-card strong {
+            display: block;
+
+            color: #dce8f3;
+            font-size: 13px;
+
+            margin-bottom: 6px;
+        }
+
+        .info-card span {
+            color: #71869c;
+            font-size: 11px;
+        }
+
+        .back-link {
+            display: inline-block;
+
+            margin-top: 25px;
+
+            color: #7dd3fc;
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+        }
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
+        @media (max-width: 700px) {
+
+            .upload-info {
+                grid-template-columns: 1fr;
+            }
+
+            .upload-box {
+                padding: 40px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- ======================================
+             TOP BAR
+        ====================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Upload Security Logs
+                </h1>
+
+                <p>
+                    Import security events into the SOC system
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <div class="status-indicator">
+
+                    <span class="status-dot"></span>
+
+                    System Online
+
+                </div>
+
+                <div class="current-user">
+
+                    {{ session.get("username", "admin") }}
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             FLASH MESSAGES
+        ====================================== -->
+
+        {% with messages = get_flashed_messages(
+            with_categories=true
+        ) %}
+
+            {% if messages %}
+
+                <div class="flash-container">
+
+                    {% for category, message in messages %}
+
+                        <div class="flash-message {{ category }}">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <!-- ======================================
+             UPLOAD SECTION
+        ====================================== -->
+
+        <div class="upload-container">
+
+
+            <section class="panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>
+                            Security Log Ingestion
+                        </h2>
+
+                        <p>
+                            Upload a TXT log file for automated analysis
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div style="padding: 25px;">
+
+
+                    <form
+                        method="POST"
+                        enctype="multipart/form-data"
+                        id="uploadForm"
+                    >
+
+
+                        <div class="upload-box">
+
+
+                            <div class="upload-icon">
+
+                                📁
+
+                            </div>
+
+
+                            <h2>
+                                Upload Security Log File
+                            </h2>
+
+
+                            <p>
+                                Select a TXT security log file
+                                to begin processing.
+                            </p>
+
+
+                            <div class="file-input-wrapper">
+
+                                <input
+                                    class="file-input"
+                                    type="file"
+                                    id="log_file"
+                                    name="log_file"
+                                    accept=".txt"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <button
+                                class="upload-button"
+                                type="submit"
+                                id="uploadButton"
+                            >
+
+                                ⬆ Upload & Analyze
+
+                            </button>
+
+
+                        </div>
+
+
+                    </form>
+
+
+                    <!-- ==================================
+                         INFORMATION CARDS
+                    ================================== -->
+
+                    <div class="upload-info">
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                📄 File Format
+                            </strong>
+
+                            <span>
+                                TXT files only
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                🔍 Log Analysis
+                            </strong>
+
+                            <span>
+                                Automatic risk calculation
+                            </span>
+
+                        </div>
+
+
+                        <div class="info-card">
+
+                            <strong>
+                                🚨 Alert Generation
+                            </strong>
+
+                            <span>
+                                Automatic security alerts
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <a
+                        class="back-link"
+                        href="{{ url_for('dashboard') }}"
+                    >
+
+                        ← Back to SOC Dashboard
+
+                    </a>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+    <!-- ==========================================
+         UPLOAD SCRIPT
+    ========================================== -->
+
+    <script>
+
+        const uploadForm =
+            document.getElementById("uploadForm");
+
+        const uploadButton =
+            document.getElementById("uploadButton");
+
+        const fileInput =
+            document.getElementById("log_file");
+
+
+        uploadForm.addEventListener(
+            "submit",
+            function () {
+
+                if (!fileInput.files.length) {
+
+                    return;
+
+                }
+
+                uploadButton.disabled = true;
+
+                uploadButton.textContent =
+                    "⏳ Processing Logs...";
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

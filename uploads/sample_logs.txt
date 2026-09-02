@@ -1,0 +1,7 @@
+2026-08-23 10:00:01|192.168.1.20|192.168.1.10|admin|Login|Successful login
+2026-08-23 10:01:12|185.220.101.5|192.168.1.10|admin|Failed Login|Multiple failed login attempts detected
+2026-08-23 10:02:20|10.0.0.25|192.168.1.10|unknown|Security Event|Suspicious port scan detected
+2026-08-23 10:03:45|172.16.0.15|192.168.1.10|user1|Security Event|Malware detected on endpoint
+2026-08-23 10:04:30|192.168.1.50|192.168.1.10|admin|Security Event|Unauthorized access detected
+2026-08-23 10:05:10|10.10.10.20|192.168.1.10|root|Security Event|Privilege escalation detected
+2026-08-23 10:06:25|10.10.10.30|192.168.1.10|user2|Security Event|Ransomware activity detected

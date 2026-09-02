@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>System | AI SOC Analyst Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+<div class="system-page">
+
+    <!-- Header -->
+    <div class="system-header">
+        <div>
+            <h1>🛡️ About Project</h1>
+            <p>AI SOC Analyst Dashboard</p>
+        </div>
+
+        <!-- Theme Switch -->
+        <button id="themeToggle" class="theme-toggle">
+            🌙 Dark Mode
+        </button>
+    </div>
+
+
+    <!-- About Project -->
+    <section class="system-card">
+
+        <div class="card-icon">
+            🛡️
+        </div>
+
+        <div class="card-content">
+
+            <h2>About the Project</h2>
+
+            <p>
+                The AI SOC Analyst Dashboard is a cybersecurity monitoring
+                platform designed to simulate a real-world Security Operations
+                Center environment.
+            </p>
+
+            <p>
+                The application allows security logs to be uploaded, parsed,
+                analyzed, and converted into security alerts based on
+                predefined detection rules.
+            </p>
+
+            <p>
+                It provides SOC analysts with a centralized dashboard for
+                monitoring security events, analyzing alerts, reviewing logs,
+                and understanding potential security threats.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Developed By -->
+    <section class="system-card">
+
+        <div class="card-icon">
+            👨‍💻
+        </div>
+
+        <div class="card-content">
+
+            <h2>Developed By</h2>
+
+            <h3>Vijay</h3>
+
+            <p>
+                Cybersecurity Enthusiast
+            </p>
+
+            <p>
+                SOC Analyst | Python Developer
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Tech Stack -->
+    <section class="system-card">
+
+        <div class="card-icon">
+            🧰
+        </div>
+
+        <div class="card-content">
+
+            <h2>Technology Stack</h2>
+
+            <div class="tech-grid">
+
+                <div class="tech-item">
+                    <strong>Python</strong>
+                    <span>Programming Language</span>
+                </div>
+
+                <div class="tech-item">
+                    <strong>Flask</strong>
+                    <span>Web Framework</span>
+                </div>
+
+                <div class="tech-item">
+                    <strong>SQLite</strong>
+                    <span>Database</span>
+                </div>
+
+                <div class="tech-item">
+                    <strong>HTML5</strong>
+                    <span>Frontend</span>
+                </div>
+
+                <div class="tech-item">
+                    <strong>CSS3</strong>
+                    <span>User Interface</span>
+                </div>
+
+                <div class="tech-item">
+                    <strong>JavaScript</strong>
+                    <span>Interactive Features</span>
+                </div>
+
+                <div class="tech-item">
+                    <strong>Jinja2</strong>
+                    <span>Template Engine</span>
+                </div>
+
+                <div class="tech-item">
+                    <strong>Git & GitHub</strong>
+                    <span>Version Control</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Cybersecurity Features -->
+    <section class="system-card">
+
+        <div class="card-icon">
+            🔐
+        </div>
+
+        <div class="card-content">
+
+            <h2>Cybersecurity Features</h2>
+
+            <div class="feature-grid">
+
+                <div class="feature-item">
+                    🔍
+                    <span>Security Log Analysis</span>
+                </div>
+
+                <div class="feature-item">
+                    🚨
+                    <span>Threat Detection</span>
+                </div>
+
+                <div class="feature-item">
+                    ⚠️
+                    <span>Alert Generation</span>
+                </div>
+
+                <div class="feature-item">
+                    🎯
+                    <span>Risk Scoring</span>
+                </div>
+
+                <div class="feature-item">
+                    📊
+                    <span>SOC Monitoring</span>
+                </div>
+
+                <div class="feature-item">
+                    🛡️
+                    <span>Security Event Classification</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Project Workflow -->
+    <section class="system-card">
+
+        <div class="card-icon">
+            🔄
+        </div>
+
+        <div class="card-content">
+
+            <h2>Project Workflow</h2>
+
+            <div class="workflow">
+
+                <span>Security Logs</span>
+                <b>→</b>
+
+                <span>Log Parser</span>
+                <b>→</b>
+
+                <span>Detection Rules</span>
+                <b>→</b>
+
+                <span>Risk Analysis</span>
+                <b>→</b>
+
+                <span>Security Alerts</span>
+                <b>→</b>
+
+                <span>SOC Dashboard</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Theme Settings -->
+    <section class="system-card">
+
+        <div class="card-icon">
+            🎨
+        </div>
+
+        <div class="card-content">
+
+            <h2>Appearance</h2>
+
+            <p>
+                Switch between Dark Mode and Light Mode.
+            </p>
+
+            <button id="themeToggleBottom" class="theme-button">
+                🌙 Switch Theme
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <div class="system-footer">
+
+        <p>
+            AI SOC Analyst Dashboard
+        </p>
+
+        <span>
+            Developed by Vijay
+        </span>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // Get saved theme
+    const savedTheme = localStorage.getItem("soc-theme");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+    }
+
+
+    // Theme buttons
+    const themeToggle = document.getElementById("themeToggle");
+    const themeToggleBottom = document.getElementById("themeToggleBottom");
+
+
+    function updateThemeButton() {
+
+        if (document.body.classList.contains("light-mode")) {
+
+            themeToggle.innerHTML = "☀️ Light Mode";
+
+        } else {
+
+            themeToggle.innerHTML = "🌙 Dark Mode";
+
+        }
+
+    }
+
+
+    function toggleTheme() {
+
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+
+            localStorage.setItem("soc-theme", "light");
+
+        } else {
+
+            localStorage.setItem("soc-theme", "dark");
+
+        }
+
+        updateThemeButton();
+
+    }
+
+
+    themeToggle.addEventListener("click", toggleTheme);
+
+    themeToggleBottom.addEventListener("click", toggleTheme);
+
+    updateThemeButton();
+
+</script>
+
+</body>
+</html>
