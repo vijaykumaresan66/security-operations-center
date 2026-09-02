@@ -13,8 +13,6 @@ BASE_DIR = Path(__file__).resolve().parent
 # VERCEL / LOCAL STORAGE
 # ==========================================
 
-# Vercel's application directory is read-only.
-# /tmp is writable but temporary.
 IS_VERCEL = bool(os.getenv("VERCEL"))
 
 if IS_VERCEL:
