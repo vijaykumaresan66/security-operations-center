@@ -10,9 +10,11 @@ BASE_DIR = Path(__file__).resolve().parent
 
 
 # ==========================================
-# VERCEL / LOCAL STORAGE
+# RUNTIME DIRECTORY
 # ==========================================
 
+# Vercel's project directory is read-only.
+# Use /tmp for files that need to be created at runtime.
 IS_VERCEL = bool(os.getenv("VERCEL"))
 
 if IS_VERCEL:
@@ -34,16 +36,12 @@ class Config:
 
     PERMANENT_SESSION_LIFETIME = 3600
 
-    # Database
     DATABASE_PATH = RUNTIME_DIR / "database" / "soc.db"
 
-    # Uploaded log files
     UPLOAD_FOLDER = RUNTIME_DIR / "uploads"
 
-    # Maximum upload size: 10 MB
     MAX_CONTENT_LENGTH = 10 * 1024 * 1024
 
-    # Allowed upload extensions
     ALLOWED_EXTENSIONS = {
         "txt",
         "log",
@@ -52,7 +50,7 @@ class Config:
 
 
 # ==========================================
-# CREATE REQUIRED DIRECTORIES
+# CREATE RUNTIME DIRECTORIES
 # ==========================================
 
 Config.UPLOAD_FOLDER.mkdir(
